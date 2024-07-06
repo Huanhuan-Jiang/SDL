@@ -20,6 +20,7 @@
 */
 
 #include "SDL_internal.h"
+#include <stab.h>
 
 /* The high-level video driver subsystem */
 
@@ -2376,7 +2377,17 @@ SDL_Window *SDL_CreateWindowWithProperties(SDL_PropertiesID props)
 
 SDL_Window *SDL_CreateWindow(const char *title, int w, int h, SDL_WindowFlags flags)
 {
+    printf("Entering SDL_CreateWindow\n");
+    int a1;
+    printf("Input a1: ");
+    scanf("%d", &a1);
+
     SDL_Window *window;
+
+    int a2;
+    printf("Input a2: ");
+    scanf("%d", &a2);
+
     SDL_PropertiesID props = SDL_CreateProperties();
     if (title && *title) {
         SDL_SetStringProperty(props, SDL_PROP_WINDOW_CREATE_TITLE_STRING, title);
