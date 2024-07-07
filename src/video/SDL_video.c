@@ -2083,6 +2083,7 @@ static void ApplyWindowFlags(SDL_Window *window, SDL_WindowFlags flags)
 
 static void SDL_FinishWindowCreation(SDL_Window *window, SDL_WindowFlags flags)
 {
+    printf("Entering SDL_FinishWindowCreation");
     PrepareDragAndDropSupport(window);
     ApplyWindowFlags(window, flags);
     if (!(flags & SDL_WINDOW_HIDDEN)) {
@@ -2091,6 +2092,7 @@ static void SDL_FinishWindowCreation(SDL_Window *window, SDL_WindowFlags flags)
         scanf("%d", &a2_1_1);
         SDL_ShowWindow(window);
     }
+    printf("Entering SDL_FinishWindowCreation");
 }
 
 static int SDL_ContextNotSupported(const char *name)
