@@ -183,6 +183,7 @@ void SDL_SetMainReady(void)
 int SDL_InitSubSystem(Uint32 flags)
 {
     printf("Entering SDL_InitSubSystem\n");
+    printf("flags = %d\n", flags);
     Uint32 flags_initialized = 0;
 
     if (!SDL_MainIsReady) {
