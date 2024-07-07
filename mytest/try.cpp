@@ -2,16 +2,8 @@
 #include <stdio.h>
 
 int main(int argc, char* argv[]) {
-    //printf("Entering main function\n");
-    //int a;
-    //printf("Input a: ");
-    //scanf("%d", &a);
-
+    
     SDL_Window *window;                    // Declare a pointer
-
-    //int b;
-    //printf("Input b: ");
-    //scanf("%d\n", &b);
 
     SDL_Init(SDL_INIT_VIDEO);              // Initialize SDL
 
