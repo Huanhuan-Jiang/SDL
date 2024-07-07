@@ -2394,6 +2394,9 @@ SDL_Window *SDL_CreateWindowWithProperties(SDL_PropertiesID props)
     if (title) {
         SDL_SetWindowTitle(window, title);
     }
+    int a2_8_1;
+    printf("Input a2_8_1: ");
+    scanf("%d", &a2_8_1);
     SDL_FinishWindowCreation(window, flags);
 
     int a2_9;
