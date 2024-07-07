@@ -593,6 +593,7 @@ int SDL_VideoInit(const char *driver_name)
             video = bootstrap[i]->create();
             //printf("Line %d: video = %s\n", __LINE__, video->name);
             if (video) {
+                printf("i=%d\n", i);
                 printf("Line %d: video = %s\n", __LINE__, video->name);
                 break;
             }
