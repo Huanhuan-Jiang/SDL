@@ -530,6 +530,7 @@ const char *SDL_GetVideoDriver(int index)
  */
 int SDL_VideoInit(const char *driver_name)
 {
+    printf("Entering SDL_VideoInit\n");
     SDL_VideoDevice *video;
     SDL_bool init_events = SDL_FALSE;
     SDL_bool init_keyboard = SDL_FALSE;
@@ -618,6 +619,7 @@ int SDL_VideoInit(const char *driver_name)
     /* Initialize the video subsystem */
     if (_this->VideoInit(_this) < 0) {
         SDL_VideoQuit();
+        printf("Exit SDL_VideoInit with SDL_VideoQuit. -1\n");
         return -1;
     }
 
@@ -642,6 +644,7 @@ int SDL_VideoInit(const char *driver_name)
     SDL_PostInitMouse();
 
     /* We're ready to go! */
+    printf("Exit SDL_VideoInit with 0\n");
     return 0;
 
 pre_driver_error:
@@ -658,6 +661,7 @@ pre_driver_error:
     if (init_events) {
         SDL_QuitSubSystem(SDL_INIT_EVENTS);
     }
+    printf("Exit SDL_VideoInit with -1\n");
     return -1;
 }
 
