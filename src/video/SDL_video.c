@@ -577,7 +577,7 @@ int SDL_VideoInit(const char *driver_name)
     if (driver_name && *driver_name != 0) {
         const char *driver_attempt = driver_name;
         while (driver_attempt && *driver_attempt != 0 && !video) {
-            //printf("Line %d: video = %s\n", __LINE__, video->name);
+            printf("Line %d: video = %s\n", __LINE__, video->name);
             const char *driver_attempt_end = SDL_strchr(driver_attempt, ',');
             size_t driver_attempt_len = (driver_attempt_end) ? (driver_attempt_end - driver_attempt)
                                                                      : SDL_strlen(driver_attempt);
@@ -585,7 +585,7 @@ int SDL_VideoInit(const char *driver_name)
             for (i = 0; bootstrap[i]; ++i) {
                 if ((driver_attempt_len == SDL_strlen(bootstrap[i]->name)) &&
                     (SDL_strncasecmp(bootstrap[i]->name, driver_attempt, driver_attempt_len) == 0)) {
-                    //printf("Line %d: video = %s\n", __LINE__, video->name);
+                    printf("Line %d: i = %d, bootstrap[i] = %s\n", __LINE__, i, bootstrap[i]->name);
                     video = bootstrap[i]->create();
                     printf("Line %d: video = %s\n", __LINE__, video->name);
                     break;
@@ -597,6 +597,7 @@ int SDL_VideoInit(const char *driver_name)
     } else {
         for (i = 0; bootstrap[i]; ++i) {
             //printf("Line %d: video = %s\n", __LINE__, video->name);
+            printf("Line %d: i = %d, bootstrap[i] = %s\n", __LINE__, i, bootstrap[i]->name);
             video = bootstrap[i]->create();
             printf("Line %d: video = %s\n", __LINE__, video->name);
             if (video) {
@@ -616,8 +617,9 @@ int SDL_VideoInit(const char *driver_name)
 
     /* From this point on, use SDL_VideoQuit to cleanup on error, rather than
     pre_driver_error. */
-    printf("Line %d: _this=%s\n", __LINE__, _this->name);
+    //printf("Line %d: _this=%s\n", __LINE__, _this->name);
     _this = video;
+    printf("Line %d: video = %s\n", __LINE__, video->name);
     _this->name = bootstrap[i]->name;
     printf("Line %d: _this=%s\n", __LINE__, _this->name);
     _this->thread = SDL_GetCurrentThreadID();
