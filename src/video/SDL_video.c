@@ -531,6 +531,7 @@ const char *SDL_GetVideoDriver(int index)
 int SDL_VideoInit(const char *driver_name)
 {
     printf("Entering SDL_VideoInit\n");
+    printf("Line %d, driver name: %s\n", __LINE__, driver_name);
     SDL_VideoDevice *video;
     SDL_bool init_events = SDL_FALSE;
     SDL_bool init_keyboard = SDL_FALSE;
@@ -567,6 +568,7 @@ int SDL_VideoInit(const char *driver_name)
     video = NULL;
     if (!driver_name) {
         driver_name = SDL_GetHint(SDL_HINT_VIDEO_DRIVER);
+        printf("Line %d, driver name: %s\n", __LINE__, driver_name);
         //printf("Line %d: _this=%s\n", __LINE__, _this->name);
     }
     if (driver_name && *driver_name != 0) {
