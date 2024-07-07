@@ -182,6 +182,7 @@ void SDL_SetMainReady(void)
 
 int SDL_InitSubSystem(Uint32 flags)
 {
+    printf("Entering SDL_InitSubSystem\n");
     Uint32 flags_initialized = 0;
 
     if (!SDL_MainIsReady) {
@@ -249,6 +250,7 @@ int SDL_InitSubSystem(Uint32 flags)
             SDL_IncrementSubsystemRefCount(SDL_INIT_VIDEO);
             if (SDL_VideoInit(NULL) < 0) {
                 SDL_DecrementSubsystemRefCount(SDL_INIT_VIDEO);
+                printf("SDL_VideoInit = -1\n");
                 goto quit_and_error;
             }
         } else {
@@ -395,16 +397,18 @@ int SDL_InitSubSystem(Uint32 flags)
     }
 
     (void)flags_initialized; /* make static analysis happy, since this only gets used in error cases. */
-
+    printf("Exit SDL_InitSubSystem with flgas_initialzied=%d\n", flags_initialized);
     return SDL_ClearError();
 
 quit_and_error:
     SDL_QuitSubSystem(flags_initialized);
+    printf("Exit SDL_InitSubSystem with -1\n");
     return -1;
 }
 
 int SDL_Init(Uint32 flags)
 {
+    printf("Entering SDL_Init\n");
     return SDL_InitSubSystem(flags);
 }
 
