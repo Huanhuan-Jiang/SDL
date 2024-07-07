@@ -2339,24 +2339,24 @@ SDL_Window *SDL_CreateWindowWithProperties(SDL_PropertiesID props)
     window->last_displayID = SDL_GetDisplayForWindow(window);
     window->external_graphics_context = external_graphics_context;
 
-    int a2_4;
-    printf("Input a2_4: ");
-    scanf("%d", &a2_4);
+    int a2_5;
+    printf("Input a2_5: ");
+    scanf("%d", &a2_5);
     if (_this->windows) {
         _this->windows->prev = window;
     }
     _this->windows = window;
-    int a2_5;
-    printf("Input a2_5: ");
-    scanf("%d", &a2_5);
+    int a2_6;
+    printf("Input a2_6: ");
+    scanf("%d", &a2_6);
 
     /* Set the parent before creation if this is non-modal, otherwise it will be set later. */
     if (!(flags & SDL_WINDOW_MODAL)) {
         SDL_SetWindowParent(window, parent);
     }
-    int a2_6;
-    printf("Input a2_6: ");
-    scanf("%d", &a2_6);
+    int a2_7;
+    printf("Input a2_7: ");
+    scanf("%d", &a2_7);
 
     if (_this->CreateSDLWindow && _this->CreateSDLWindow(_this, window, props) < 0) {
         SDL_DestroyWindow(window);
@@ -2384,9 +2384,9 @@ SDL_Window *SDL_CreateWindowWithProperties(SDL_PropertiesID props)
     flags = window->flags;
 #endif
 
-    int a2_7;
-    printf("Input a2_7: ");
-    scanf("%d", &a2_7);
+    int a2_8;
+    printf("Input a2_8: ");
+    scanf("%d", &a2_8);
 
     if (flags & SDL_WINDOW_MODAL) {
         SDL_SetWindowModalFor(window, parent);
@@ -2396,9 +2396,9 @@ SDL_Window *SDL_CreateWindowWithProperties(SDL_PropertiesID props)
     }
     SDL_FinishWindowCreation(window, flags);
 
-    int a2_8;
-    printf("Input a2_8: ");
-    scanf("%d", &a2_8);
+    int a2_9;
+    printf("Input a2_9: ");
+    scanf("%d", &a2_9);
 
     /* Make sure window pixel size is up to date */
     SDL_CheckWindowPixelSizeChanged(window);
