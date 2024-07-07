@@ -3090,52 +3090,26 @@ int SDL_ShowWindow(SDL_Window *window)
         return 0;
     }
 
-    int b1;
-    printf("Input b1: ");
-    scanf("%d", &b1);
-
     /* If the parent is hidden, set the flag to restore this when the parent is shown */
     if (window->parent && (window->parent->flags & SDL_WINDOW_HIDDEN)) {
         window->restore_on_show = SDL_TRUE;
         return 0;
     }
 
-    int b2;
-    printf("Input b2: ");
-    scanf("%d", &b2);
-
     if (_this->ShowWindow) {
-        int b3;
-        printf("Input b3: ");
-        scanf("%d", &b3);
         _this->ShowWindow(_this, window);
     } else {
-        int b4;
-        printf("Input b4: ");
-        scanf("%d", &b4);
         SDL_SetMouseFocus(window);
         SDL_SetKeyboardFocus(window);
     }
 
-    int b5;
-    printf("Input b5: ");
-    scanf("%d", &b5);
     SDL_SendWindowEvent(window, SDL_EVENT_WINDOW_SHOWN, 0, 0);
-    int b6;
-    printf("Input b6: ");
-    scanf("%d", &b6);
 
     /* Restore child windows */
     for (child = window->first_child; child; child = child->next_sibling) {
         if (!child->restore_on_show && (child->flags & SDL_WINDOW_HIDDEN)) {
-            int b7;
-            printf("Input b7: ");
-            scanf("%d", &b7);
             break;
         }
-        int b8;
-        printf("Input b8: ");
-        scanf("%d", &b8);
         SDL_ShowWindow(child);
         child->restore_on_show = SDL_FALSE;
     }

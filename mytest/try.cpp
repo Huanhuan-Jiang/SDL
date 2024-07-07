@@ -5,7 +5,9 @@ int main(int argc, char* argv[]) {
     
     SDL_Window *window;                    // Declare a pointer
 
+    printf("Line %d: _this=%s\n", __LINE__, _this->name);
     SDL_Init(SDL_INIT_VIDEO);              // Initialize SDL
+    printf("Line %d: _this=%s\n", __LINE__, _this->name);
 
     // Create an application window with the following settings:
     window = SDL_CreateWindow(
@@ -14,6 +16,7 @@ int main(int argc, char* argv[]) {
         480,                               // height, in pixels
         SDL_WINDOW_OPENGL                  // flags - see below
     );
+    printf("Line %d: _this=%s\n", __LINE__, _this->name);
 
     // Check that the window was successfully created
     if (window == NULL) {
