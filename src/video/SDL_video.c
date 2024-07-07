@@ -2150,6 +2150,7 @@ static SDL_WindowFlags SDL_GetWindowFlagProperties(SDL_PropertiesID props)
 
 SDL_Window *SDL_CreateWindowWithProperties(SDL_PropertiesID props)
 {
+    printf("Entering SDL_CreateWindowWithProperties\n");
     SDL_Window *window;
     const char *title = SDL_GetStringProperty(props, SDL_PROP_WINDOW_CREATE_TITLE_STRING, NULL);
     int x = (int)SDL_GetNumberProperty(props, SDL_PROP_WINDOW_CREATE_X_NUMBER, SDL_WINDOWPOS_UNDEFINED);
@@ -2289,7 +2290,14 @@ SDL_Window *SDL_CreateWindowWithProperties(SDL_PropertiesID props)
         }
     }
 
+    int a2_1;
+    printf("Input a2_1: ");
+    scanf("%d", &a2_1);
     window = (SDL_Window *)SDL_calloc(1, sizeof(*window));
+    int a2_2;
+    printf("Input a2_2: ");
+    scanf("%d", &a2_2);
+
     if (!window) {
         return NULL;
     }
@@ -2371,22 +2379,15 @@ SDL_Window *SDL_CreateWindowWithProperties(SDL_PropertiesID props)
 
     /* Make sure window pixel size is up to date */
     SDL_CheckWindowPixelSizeChanged(window);
-
+    printf("Exit SDL_CreateWindowWithProperties\n");
     return window;
 }
 
 SDL_Window *SDL_CreateWindow(const char *title, int w, int h, SDL_WindowFlags flags)
 {
     printf("Entering SDL_CreateWindow\n");
-    int a1;
-    printf("Input a1: ");
-    scanf("%d", &a1);
-
+    
     SDL_Window *window;
-
-    int a2;
-    printf("Input a2: ");
-    scanf("%d", &a2);
 
     SDL_PropertiesID props = SDL_CreateProperties();
     if (title && *title) {
@@ -2395,7 +2396,14 @@ SDL_Window *SDL_CreateWindow(const char *title, int w, int h, SDL_WindowFlags fl
     SDL_SetNumberProperty(props, SDL_PROP_WINDOW_CREATE_WIDTH_NUMBER, w);
     SDL_SetNumberProperty(props, SDL_PROP_WINDOW_CREATE_HEIGHT_NUMBER, h);
     SDL_SetNumberProperty(props, "flags", flags);
+
+    int a1;
+    printf("Input a1: ");
+    scanf("%d", &a1);
     window = SDL_CreateWindowWithProperties(props);
+    int a2;
+    printf("Input a2: ");
+    scanf("%d", &a2);
     SDL_DestroyProperties(props);
     return window;
 }
