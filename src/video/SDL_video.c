@@ -2091,7 +2091,7 @@ static void SDL_FinishWindowCreation(SDL_Window *window, SDL_WindowFlags flags)
         int showwindow=SDL_ShowWindow(window);
         printf("SDL_ShowWindow=%d\n", showwindow);
     }
-    printf("Entering SDL_FinishWindowCreation\n");
+    printf("Exit SDL_FinishWindowCreation\n");
 }
 
 static int SDL_ContextNotSupported(const char *name)
