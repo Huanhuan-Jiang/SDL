@@ -2086,6 +2086,9 @@ static void SDL_FinishWindowCreation(SDL_Window *window, SDL_WindowFlags flags)
     PrepareDragAndDropSupport(window);
     ApplyWindowFlags(window, flags);
     if (!(flags & SDL_WINDOW_HIDDEN)) {
+        int a2_1_1;
+        printf("Input a2_1: ");
+        scanf("%d", &a2_1_1);
         SDL_ShowWindow(window);
     }
 }
@@ -2290,21 +2293,12 @@ SDL_Window *SDL_CreateWindowWithProperties(SDL_PropertiesID props)
         }
     }
 
-    int a2_1;
-    printf("Input a2_1: ");
-    scanf("%d", &a2_1);
     window = (SDL_Window *)SDL_calloc(1, sizeof(*window));
-    int a2_2;
-    printf("Input a2_2: ");
-    scanf("%d", &a2_2);
 
     if (!window) {
         return NULL;
     }
     SDL_SetObjectValid(window, SDL_OBJECT_TYPE_WINDOW, SDL_TRUE);
-    int a2_3;
-    printf("Input a2_3: ");
-    scanf("%d", &a2_3);
     window->id = SDL_GetNextObjectID();
     window->floating.x = window->windowed.x = window->x = x;
     window->floating.y = window->windowed.y = window->y = y;
@@ -2315,9 +2309,6 @@ SDL_Window *SDL_CreateWindowWithProperties(SDL_PropertiesID props)
 
     SDL_VideoDisplay *display = SDL_GetVideoDisplayForWindow(window);
     SDL_SetWindowHDRProperties(window, &display->HDR, SDL_FALSE);
-    int a2_4;
-    printf("Input a2_4: ");
-    scanf("%d", &a2_4);
 
     if (flags & SDL_WINDOW_FULLSCREEN || IsFullscreenOnly(_this)) {
         SDL_Rect bounds;
@@ -2339,24 +2330,15 @@ SDL_Window *SDL_CreateWindowWithProperties(SDL_PropertiesID props)
     window->last_displayID = SDL_GetDisplayForWindow(window);
     window->external_graphics_context = external_graphics_context;
 
-    int a2_5;
-    printf("Input a2_5: ");
-    scanf("%d", &a2_5);
     if (_this->windows) {
         _this->windows->prev = window;
     }
     _this->windows = window;
-    int a2_6;
-    printf("Input a2_6: ");
-    scanf("%d", &a2_6);
 
     /* Set the parent before creation if this is non-modal, otherwise it will be set later. */
     if (!(flags & SDL_WINDOW_MODAL)) {
         SDL_SetWindowParent(window, parent);
     }
-    int a2_7;
-    printf("Input a2_7: ");
-    scanf("%d", &a2_7);
 
     if (_this->CreateSDLWindow && _this->CreateSDLWindow(_this, window, props) < 0) {
         SDL_DestroyWindow(window);
@@ -2384,24 +2366,16 @@ SDL_Window *SDL_CreateWindowWithProperties(SDL_PropertiesID props)
     flags = window->flags;
 #endif
 
-    int a2_8;
-    printf("Input a2_8: ");
-    scanf("%d", &a2_8);
-
     if (flags & SDL_WINDOW_MODAL) {
         SDL_SetWindowModalFor(window, parent);
     }
     if (title) {
         SDL_SetWindowTitle(window, title);
     }
-    int a2_8_1;
-    printf("Input a2_8_1: ");
-    scanf("%d", &a2_8_1);
+    int a2_1;
+    printf("Input a2_1: ");
+    scanf("%d", &a2_1);
     SDL_FinishWindowCreation(window, flags);
-
-    int a2_9;
-    printf("Input a2_9: ");
-    scanf("%d", &a2_9);
 
     /* Make sure window pixel size is up to date */
     SDL_CheckWindowPixelSizeChanged(window);
