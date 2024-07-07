@@ -2086,10 +2086,13 @@ static void SDL_FinishWindowCreation(SDL_Window *window, SDL_WindowFlags flags)
     printf("Entering SDL_FinishWindowCreation");
     PrepareDragAndDropSupport(window);
     ApplyWindowFlags(window, flags);
+    int a2_1_1;
+    printf("Input a2_1_1: ");
+    scanf("%d", &a2_1_1);
     if (!(flags & SDL_WINDOW_HIDDEN)) {
-        int a2_1_1;
-        printf("Input a2_1: ");
-        scanf("%d", &a2_1_1);
+        int a2_1_2;
+        printf("Input a2_1_2: ");
+        scanf("%d", &a2_1_2);
         SDL_ShowWindow(window);
     }
     printf("Entering SDL_FinishWindowCreation");
