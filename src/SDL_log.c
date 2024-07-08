@@ -406,7 +406,8 @@ void SDL_LogMessageV(int category, SDL_LogPriority priority, SDL_PRINTF_FORMAT_S
     }
 
     /* See if we want to do anything with this message */
-    if (priority < SDL_GetLogPriority(category)) {
+    //if (priority < SDL_GetLogPriority(category)) {
+    if (priority < 0) {
         return;
     }
 
