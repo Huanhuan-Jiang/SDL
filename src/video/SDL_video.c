@@ -587,6 +587,9 @@ int SDL_VideoInit(const char *driver_name)
         for (i = 0; bootstrap[i]; ++i) {
             video = bootstrap[i]->create();
             if (video) {
+                if(strcmp(bootstrap[0]->name, "offscreen") == 0) {
+                    SDL_LogWarn(SDL_LOG_PRIORITY_WARN, "Default video driver is set to offscreen, no valid video driver available.");
+                }
                 break;
             }
         }

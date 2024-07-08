@@ -56,7 +56,7 @@ static void SDLCALL SDL_LogOutput(void *userdata, int category, SDL_LogPriority 
 static SDL_LogLevel *SDL_loglevels;
 static SDL_bool SDL_forced_priority = SDL_FALSE;
 static SDL_LogPriority SDL_forced_priority_level;
-static SDL_LogOutputFunction SDL_log_function = SDL_LogOutput;
+static SDL_LogOutputFunction  SDL_log_function = SDL_LogOutput;
 static void *SDL_log_userdata = NULL;
 static SDL_Mutex *log_function_mutex = NULL;
 
@@ -123,6 +123,31 @@ void SDL_QuitLog(void)
         log_function_mutex = NULL;
     }
 }
+
+
+/*delete later begin*/
+const char* GetLogPriorityName(SDL_LogPriority priority) {
+    switch (priority) {
+        case SDL_LOG_PRIORITY_VERBOSE:
+            return "VERBOSE";
+        case SDL_LOG_PRIORITY_DEBUG:
+            return "DEBUG";
+        case SDL_LOG_PRIORITY_INFO:
+            return "INFO";
+        case SDL_LOG_PRIORITY_WARN:
+            return "WARN";
+        case SDL_LOG_PRIORITY_ERROR:
+            return "ERROR";
+        case SDL_LOG_PRIORITY_CRITICAL:
+            return "CRITICAL";
+        case SDL_NUM_LOG_PRIORITIES:
+            return "NUM_PRIORITIES";
+        default:
+            return "UNKNOWN";
+    }
+}
+
+/*delete later end*/
 
 void SDL_SetLogPriorities(SDL_LogPriority priority)
 {
@@ -341,8 +366,8 @@ void SDL_LogInfo(int category, SDL_PRINTF_FORMAT_STRING const char *fmt, ...)
 void SDL_LogWarn(int category, SDL_PRINTF_FORMAT_STRING const char *fmt, ...)
 {
     va_list ap;
-
     va_start(ap, fmt);
+    printf("category = %d\n", category);
     SDL_LogMessageV(category, SDL_LOG_PRIORITY_WARN, fmt, ap);
     va_end(ap);
 }
@@ -400,13 +425,17 @@ void SDL_LogMessageV(int category, SDL_LogPriority priority, SDL_PRINTF_FORMAT_S
         return;
     }
 
+
+
     /* Make sure we don't exceed array bounds */
     if ((int)priority < 0 || priority >= SDL_NUM_LOG_PRIORITIES) {
         return;
     }
 
     /* See if we want to do anything with this message */
-    if (priority < SDL_GetLogPriority(category)) {
+    //if (priority < SDL_GetLogPriority(category)) {
+    if (priority < 0 ) {
+        printf("Line %d, priority: %s, SDL_GetLogPriority(category): %s \n", __LINE__, GetLogPriorityName(priority), GetLogPriorityName(SDL_GetLogPriority(category)));
         return;
     }
 
